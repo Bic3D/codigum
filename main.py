@@ -9,7 +9,7 @@ actions = ["dicere", "saluete", "inputum", "aequat"]
 variables = {}
 
 
-def intToRoman(num):  # from w3resource.com
+def intToRoman(num):
     prefix = ""
     if num < 0:
         prefix = "-"
@@ -38,7 +38,7 @@ def intToRoman(num):  # from w3resource.com
     return prefix + res
 
 
-def romanToInt(s):  # from tutorialspoint.com
+def romanToInt(s):
     coeff = 1
     if s[0] == "-":
         coeff = -1
