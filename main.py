@@ -1,11 +1,10 @@
 
-
 text = open("test.um", "r").read()
 
 print("\n*********************\n\n\t>> CODIGUM <<\n\t versium 0.1\n")
 print("-> Output:")
 
-actions = ["dicere", "saluete", "inputum", "aequat"]
+actions = ["dicere", "saluete", "inputum", "est"]
 variables = {}
 
 
@@ -161,7 +160,7 @@ def action(arguments, action):
 
     elif action == "saluete":
         return "Hellum Worldum!"
-    elif action == "aequat":
+    elif action == "est":
         variables[arguments[0][1]] = arguments[1][1]
 
         return ""
@@ -196,7 +195,7 @@ def parse(tokens):
             if line[i][0] == "OPERATION":
                 op += 1
             elif line[i][0] == "VAR":
-                if (line[-1][0] == "ACTION" and line[-1][1] == "aequat") == False:
+                if (line[-1][0] == "ACTION" and line[-1][1] == "est") == False:
                     vtype = type(variables[line[i][1]])
                     if vtype is str:
                         line[i] = "STRING", variables[line[i][1]]

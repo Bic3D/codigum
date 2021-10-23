@@ -1,5 +1,5 @@
 # Codigum!
-The first programming langage in latin!
+The first programming langage in latin! (please keep your eyes closed when if you read the source code)
 
 It is pretty useless though.
 
@@ -16,9 +16,9 @@ usage: `<argument 1> <argument 2>... dicere` (at least one argument)
 
 example: `"ave" dicere`
 
-#### Aequat
+#### Est
 Defines a variable
 
-usage: `<variable name> <content> dicere`
+usage: `<variable name> <content> est`
 
-example: `numerum II dicere`
+example: `numerum II est`
