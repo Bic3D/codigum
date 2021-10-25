@@ -1,10 +1,12 @@
+from os import replace
+
 
 text = open("test.um", "r").read()
 
-print("\n*********************\n\n\t>> CODIGUM <<\n\t versium 0.1\n")
-print("-> Output:")
+print("\n*********************\n\n\t>> CODIGUM <<\n\t versium 0.II\n")
+print("-> outputum:")
 
-actions = ["dicere", "saluete", "inputum", "est"]
+actions = ["dicere", "saluete", "repetare", "est"]
 variables = {}
 
 
@@ -117,6 +119,9 @@ def lex(text):
         elif char == "+" or char == "-":
             result.append(("OPERATION", char))
 
+        elif char == "#":
+            result.append(("COMMENT", char))
+
         else:
             current += fixjv(char)
 
@@ -127,6 +132,7 @@ def lex(text):
 
 
 # print(lex(text))
+
 
 def dicere(arguments):
     output = ""
@@ -170,10 +176,29 @@ def action(arguments, action):
         return ""
 
 
+def executeline(line):
+    previousT = []
+    output = ""
+
+    if line[-1][0] == "ACTION" and line[-1][1] == actions[2]:
+        for i in range(line[-2][1]):
+            output += executeline(line[:-2])
+
+        return output
+
+    for token in line:
+        if token[0] == "ACTION":
+            output += action(previousT, token[1])
+        else:
+            previousT.append(token)
+    return output
+
+
 def parse(tokens):
     output = ""
     lines = []
     currentline = []
+
     for i in range(len(tokens)):
         if tokens[i][0] == "NEWLINE":
             if currentline != []:
@@ -187,9 +212,15 @@ def parse(tokens):
     # print(lines)
 
     for line in lines:
-        previousT = []
         n = 0
         op = 0
+
+        commentFound = False
+        for i in range(len(line)-1):
+            if commentFound == False:
+                if line[i][0] == "COMMENT":
+                    line = line[:i]
+                    commentFound == True
 
         for i in range(len(line)):
             if line[i][0] == "OPERATION":
@@ -221,12 +252,7 @@ def parse(tokens):
                         line.remove(line[i])
                         done = True
 
-        for token in line:
-            if token[0] == "ACTION":
-                output += action(previousT, token[1])
-            else:
-                previousT.append(token)
-            n += 1
+        output += executeline(line)
 
     return output
 

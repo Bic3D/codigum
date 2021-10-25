@@ -1,10 +1,7 @@
 "hello worldum" dicere
 "ex calculi est" XVII minus I dicere
-numerum XI est
-praenomen "Bicum" est
+numerum II est
+III plus numerum dicere # commentum
 
-III plus numerum dicere
-
-II plus III dicere
-
-"Hello" praenomen "!" dicere
+praenomen "maximilianum" est
+"Hello" praenomen "!" dicere numerum repetare
