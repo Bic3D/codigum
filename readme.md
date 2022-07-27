@@ -1,6 +1,8 @@
 # Codigum!
 The first programming langage in latin! (please keep your eyes closed when if you read the source code)
 
+Edit: actually not, it looks like it is the third, after Lusus and Lingua::Romana::Perligata.
+
 It is pretty useless though.
 
 
